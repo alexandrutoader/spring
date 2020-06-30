@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Web Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<p th:text="'Hello ' + ${username}+'!'"></p>
+
+<form method="POST" action="/hello">
+    <h2>Please input your address</h2>
+    <input type="text" name="address"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>

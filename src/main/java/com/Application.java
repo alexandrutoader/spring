@@ -1,15 +1,12 @@
 package com;
 
-import com.tutorialspoint.BeanWIthDependencyOfHelloWorld;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application {// implements CommandLineRunner {
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -18,12 +15,12 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        String beanutza = (String) applicationContext.getBean("beanutza");
-        System.out.println("beanutza-->" + beanutza);
-
-		BeanWIthDependencyOfHelloWorld bean = applicationContext.getBean(BeanWIthDependencyOfHelloWorld.class);
-		bean.getHelloWorld().sayHello();
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//        String beanutza = (String) applicationContext.getBean("beanutza");
+//        System.out.println("beanutza-->" + beanutza);
+//
+//		BeanWIthDependencyOfHelloWorld bean = applicationContext.getBean(BeanWIthDependencyOfHelloWorld.class);
+//		bean.getHelloWorld().sayHello();
+//    }
 }
