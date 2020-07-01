@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">BirthDate</th>
+    </tr>
+    </thead>
+    <tbody th:each="singer : ${singers}" th:remove="tag">
+    <tr>
+        <th scope="row">1</th>
+        <td th:text="${singer.id}">...</td>
+        <td th:text="${singer.firstName}">..</td>
+        <td th:text="${singer.lastName}">..</td>
+        <td th:text="${singer.birthDate}">..</td>
+    </tr>
+    </tbody>
+</table>
+</body>

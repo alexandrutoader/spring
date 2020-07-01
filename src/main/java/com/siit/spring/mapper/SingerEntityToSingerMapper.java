@@ -22,16 +22,17 @@ public class SingerEntityToSingerMapper implements Converter<SingerEntity, Singe
     @Override
     public Singer convert(SingerEntity source) {
         return Singer.builder()
-                     .id(source.getId())
-                     .firstName(source.getFirstName())
-                     .birthDate(source.getBirthDate())
-                     .albums(mapAlbumsList(source.getAlbums()))
-                     .build();
+                .id(source.getId())
+                .firstName(source.getFirstName())
+                .lastName(source.getLastName())
+                .birthDate(source.getBirthDate())
+                .albums(mapAlbumsList(source.getAlbums()))
+                .build();
     }
 
     private List<Album> mapAlbumsList(List<AlbumEntity> albums) {
         return albums.stream()
-                     .map(albumEntityToAlbumMapper::convert)
-                     .collect(Collectors.toList());
+                .map(albumEntityToAlbumMapper::convert)
+                .collect(Collectors.toList());
     }
 }

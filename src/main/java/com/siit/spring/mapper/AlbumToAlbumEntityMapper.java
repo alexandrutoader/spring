@@ -2,20 +2,17 @@ package com.siit.spring.mapper;
 
 import com.siit.spring.domain.entity.AlbumEntity;
 import com.siit.spring.domain.model.Album;
-
-import com.siit.spring.service.SingerService;
+import lombok.AllArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import lombok.AllArgsConstructor;
-
 @Component
 @AllArgsConstructor
-public class AlbumEntityToAlbumMapper implements Converter<AlbumEntity, Album> {
+public class AlbumToAlbumEntityMapper implements Converter<Album, AlbumEntity> {
 
     @Override
-    public Album convert(AlbumEntity source) {
-        return Album.builder()
+    public AlbumEntity convert(Album source) {
+        return AlbumEntity.builder()
                 .id(source.getId())
                 .title(source.getTitle())
                 .releaseDate(source.getReleaseDate())
