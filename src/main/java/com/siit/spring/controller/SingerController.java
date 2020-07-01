@@ -24,7 +24,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SingerController {
 
-    //constructor injection
     private final SingerService service;
 
     private final ApplicationProperties properties;
@@ -32,14 +31,14 @@ public class SingerController {
     @Value("com.siit.studentNames")
     private List<String> studentNames;
 
-    @GetMapping("/{id}") //    /singers/10
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get singer by id.")
     public Singer getOneSinger(@PathVariable("id") long id) {
         return service.findById(id);
     }
 
-    @GetMapping //    /singers
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Get all singers.")
     public List<Singer> getAllSingerrs(Model model) {
@@ -54,8 +53,6 @@ public class SingerController {
     public Singer create(@RequestBody Singer singer) {
         return service.create(singer);
     }
-    //{id:12,
-    // firstName: "sjansjan",}
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
