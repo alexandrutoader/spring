@@ -33,15 +33,13 @@ public class SingerController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get singer by id.")
     public Singer getOneSinger(@PathVariable("id") long id) {
         return service.findById(id);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Get all singers.")
-    public List<Singer> getAllSingerrs(Model model) {
+    public List<Singer> getAllSingerrs() {
         System.out.println("The number of students: " + properties.getNumberOfStudents());
         System.out.println("The names of students: " + studentNames);
         return service.getAll();
@@ -49,29 +47,25 @@ public class SingerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Create new singer.")
     public Singer create(@RequestBody Singer singer) {
         return service.create(singer);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Update singer by id.")
     public void update(@PathVariable("id") long id, @RequestBody Singer singer) {
         singer.setId(id);
         service.updateTransactional(singer);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") long id) {
+        service.delete(id);
+    }
+
     @ExceptionHandler(SingerNotFoundException.class)
     public void notFound(HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.NOT_FOUND.value());
-    }
-
-    @GetMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Delete singer by id.")
-    public void delete(@PathVariable("id") long id) {
-        Singer singer = service.findById(id);
-        service.delete(singer);
     }
 }
